@@ -1,2 +1,7 @@
-# 2_Sessao_ITW2018
-Link atividade passada : https://drive.google.com/drive/folders/1V-tre0brq47ViXU_M3rcvIsFlQSBDuRy
+# 2ª Sessão de ITW - 2018
+
+Sessão de estudo organizada pelo NEI-AAUAv no dia 10 de dezembro de 2018.
+
+## Oradores
+⋅⋅* Miguel Fradinho Alves
+⋅⋅* Pedro Escaleira

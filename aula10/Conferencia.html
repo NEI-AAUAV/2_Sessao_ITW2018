@@ -68,14 +68,14 @@
     <!--Begin Modal for participants-->
     <div class="modal fade" id="addOrEdit" tabindex="-1" role="dialog" aria-labelledby="addOrEditLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" data-bind="with: tempPart">
           <div class="modal-header text-white bg-info">
-            <h4 class="modal-title" id="addOrEditLabel" data-bind="text: addOrEditTitle"></h4>
+            <h4 class="modal-title" id="addOrEditLabel" data-bind="text: $root.addOrEditTitle"></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" data-bind="with: tempPart">
+          <div class="modal-body">
             <div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="name">Name</label>
@@ -125,7 +125,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary"  data-bind="click: saveParticipant">Save changes</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: $root.saveParticipant">Save changes</button>
           </div>
         </div>
       </div>

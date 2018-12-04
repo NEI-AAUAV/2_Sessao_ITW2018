@@ -17,13 +17,16 @@ $(document).ready(function() {
         self.addOrEditTitle = ko.observable();
         self.tempPart = ko.observable(new participantModel(empty_participant));
         self.readParticipants = function(){
-            self.participants([
-                {'name': 'Noé Elisabete Ferreiro', 'email' : '', 'address' : '', 'birthDate' : '', 'sex' : 'Male', 'course' : {'id' : '', 'name' : ''}},
-                {'name': 'Marta Matias Lucas', 'email' : 'marta.lucas@teste.com', 'address' : '', 'birthDate' : '', 'sex' : '', 'course' : {'id' : '', 'name' : ''} },
-                { 'name': 'Ezequiel Augusto Melo', 'email': '', 'address': 'Rua de Cima, n.º 8\nAveiro\nPORTUGAL', 'birthDate': '1998/11/17', 'sex': 'Male', 'course': { 'id': '', 'name': '' } },
-                {'name': 'Albino Nico Armando', 'email' : '', 'address' : '', 'birthDate' : '', 'sex' : '', 'course' : {'id' : '', 'name' : ''} },
-                {'name': 'Alexandra Eufêmia Torres', 'email' : '', 'address' : '', 'birthDate' : '', 'sex' : '', 'course' : {'id' : '', 'name' : ''} }
-            ]);
+            var data_from_somewhere = [ {'name': 'Noé Elisabete Ferreiro', 'email' : '', 'address' : '', 'birthDate' : '', 'sex' : 'Male', 'course' : {'id' : '', 'name' : ''}},
+            {'name': 'Marta Matias Lucas', 'email' : 'marta.lucas@teste.com', 'address' : '', 'birthDate' : '', 'sex' : '', 'course' : {'id' : '', 'name' : ''} },
+            { 'name': 'Ezequiel Augusto Melo', 'email': '', 'address': 'Rua de Cima, n.º 8\nAveiro\nPORTUGAL', 'birthDate': '1998/11/17', 'sex': 'Male', 'course': { 'id': '', 'name': '' } },
+            {'name': 'Albino Nico Armando', 'email' : '', 'address' : '', 'birthDate' : '', 'sex' : '', 'course' : {'id' : '', 'name' : ''} },
+            {'name': 'Alexandra Eufêmia Torres', 'email' : '', 'address' : '', 'birthDate' : '', 'sex' : '', 'course' : {'id' : '', 'name' : ''} }];
+            var new_participants = [];
+            data_from_somewhere.forEach(element => {
+                new_participants.push(new participantModel(element));
+            });
+            self.participants(new_participants);
         }
         
         self.clearParticipants = function(){
@@ -35,12 +38,14 @@ $(document).ready(function() {
             self.addOrEditTitle = "Create Participant";
         }
         self.saveParticipant = function(participant){
-            console.log("Save participant");
-            console.log(participant);
+            var new_part = new participantModel(participant);
+            if(participants.indexOf(new_part) !== -1){
+                self.participants.push(new_part);
+            }
         }
         self.deleteParticipant = function (participant) { 
             self.participants.remove(participant);
-            self.tempPart(participant);
+            self.tempPart(empty_participant);
         }
         
         self.editParticipant = function (participant) {

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Participants</title>
+
+  <!-- Bootstrap -->
+  <link href="../lib/bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!--Font Awesome-->
+  <link href="../lib/fontawesome-free-5.5.0-web/css/all.min.css" rel="stylesheet" />
+  <!-- Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+  <!--Begin Main Content-->
+  <div class="container-fluid">
+    <h2 class="mt-5"><i class="fas fa-users" aria-hidden="true"></i> knockOut conference - Participants</h2>
+    <!--Begin Participants Table-->
+    <div class="row">
+
+
+      <div class="col-sm-12 col-lg-12 col-xl-12">
+        <table class="table table-striped">
+          <thead>
+            <th class="col-sm-4">Name</th>
+            <th class="col-sm-3">Email</th>
+            <th class="col-sm-2">BirthDate</th>
+            <th class="col-sm-1">Sex</th>
+            <th class="col-sm-1 col-lg-1 col-xl-1 "></th>
+          </thead>
+          <tbody data-bind="foreach: participants">
+            <tr>
+              <td data-bind="text: name"></td>
+              <td data-bind="text: email"></td>
+              <td data-bind="text: birthDate"></td>
+              <td data-bind="text: sex"></td>
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" data-bind="click: $parent.editParticipant"
+                  data-toggle="modal" data-target="#addOrEdit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-danger" data-bind="click: $parent.deleteParticipant">
+                  <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--End of Participants Table-->
+
+    <!--Begin General buttons-->
+    <div class="float-right">
+      <button type="button" class="btn btn-outline-secondary" data-bind="click: addNewParticipant()" data-toggle="modal"
+        data-target="#addOrEdit"><i class="far fa-user" aria-hidden="true"></i></button>
+      <button type="button" class="btn btn-outline-secondary" data-bind="click: readParticipants()"><i class="far fa-folder-open"
+          aria-hidden="true"></i></button>
+      <button type="button" class="btn btn-outline-secondary" data-bind="click: clearParticipants"><i class="far fa-trash-alt"
+          aria-hidden="true"></i></button>
+    </div>
+    <!--End of General Buttons-->
+    <!--Begin Modal for participants-->
+    <div class="modal fade" id="addOrEdit" tabindex="-1" role="dialog" aria-labelledby="addOrEditLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-white bg-info">
+            <h4 class="modal-title" id="addOrEditLabel" data-bind="text: addOrEditTitle"></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" data-bind="with: tempPart">
+            <div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="name">Name</label>
+                <input class="col-sm-10 form-control" type="text" name="name" placeholder="Name" data-bind="textInput: name">
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="email">Email</label>
+                <input class="col-sm-10 form-control" type="text" placeholder="Email" name="email" data-bind="textInput: email">
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="address">Address</label>
+                <textarea class="col-sm-10 form-control" placeholder="Address" name="address" data-bind="textInput: address"></textarea>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="birthdate">BirthDate</label>
+                <input class="col-sm-10 form-control" type="text" placeholder="BirthDate" name="birthdate" data-bind="textInput: birthDate">
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="maleOption" type="radio" name="sexOptions" value="Male" data-bind="checked: sex">
+                      <label class="form-check-label" for="maleOption">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="femaleOption" type="radio" name="sexOptions" value="Female" data-bind="checked: sex">
+                      <label class="form-check-label" for="femaleOption">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="otherOption" type="radio" name="sexOptions" value="Other" data-bind="checked: sex">
+                      <label class="form-check-label" for="otherOption">Other</label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group form-row">
+                <label class="col-sm-2 col-form-label" for="course"> Course: </label>
+                <select class="col-sm-10 custom-select" name="course">
+                  <option value="" selected disabled hidden>Pick One</option>
+                  <option value="1">Engenharia de Computadores e Telem&aacute;tica</option>
+                  <option value="2">Engenharia Electr&oacute;nica e Telecomunica&ccedil;&otilde;es</option>
+                  <option value="3">Engenharia Inform&aacute;tica</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"  data-bind="click: saveParticipant">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of Modal for participants-->
+  </div>
+  <!--End of Main Content-->
+
+  <!--Scripts-->
+  <script type="text/javascript" src="../lib/jquery/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../lib/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script type="text/javascript" src="../lib/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../lib/knockout/knockout-3.4.2.js"> </script>
+  <script type="text/javascript" src="main.js"></script>
+  <!--End of Scripts-->
+</body>
+
+</html>

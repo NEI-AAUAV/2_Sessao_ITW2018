@@ -35,6 +35,7 @@ $(document).ready(function () {
             {code : "Paris, FR", name: "Paris",},
             {code : "London, UK", name: "Londres",},
             {code : "New York, USA", name: "Nova Iorque",},
+            {code : "Xpto, PT", name:"Cidade que não existe e vai mostrar o erro da API"},
         ];
         // cidade escolhida
         self.chosenCity = ko.observable();
@@ -59,20 +60,51 @@ $(document).ready(function () {
 
                     APPID: "b2b1df463182c3cca5276e9d3267cc95"
                 },
-                success: function (data) {
+                success: function (data, status, res) {
+                    /*
+                        Nota: o res é a resposta ao pedido
+                        Por questões de conveniencia, 
+                        o jQuery passa-nos como primeiro argumento o data.
+                        o data é o mesmo JSON da resposta ao pedido ( res.responseJSON)
+                    */
+                    console.log(status);
                     if (data.name) {
-                        $("table").removeClass("hidden");
+                        $("table").removeClass("invisible");
                         self.cityDetail(new CityWeatherDetailModel(data));
-                    } else {
-                        $("table").addClass("hidden");
-                        alert(data.message);
+                    } 
+                    /*
+                        Nota: Normalmente, este else nunca é chamado porque estamos a assumir que,
+                        quando o pedido é bem feito, que a API devolve um ficheiro JSON com um .name (e etc)
+                        Mas se por alguma eventualidade a API devolver valores que não estamos à espera
+                        Podemos perceber o que se passa de errado (eles poderiam estar a mudar o JSON da resposta)
+                    */
+                    else {
+                        $("table").addClass("invisible");
+                        console.log(data);
+                        alert("Something else went wrong? API returned success but no data was found");
                     }
                 },
-                error: function () {
-                    $("table").addClass("hidden");
-                    alert("Erro !");
+                error: function (res, status, err) {
+                    console.log(status,err);
+                    if(res.responseJSON.message){
+                        $("table").addClass("invisible");
+                        alert(res.responseJSON.message);
+                    }
+                    /*
+                        Nota: Similar ao de cima.
+                        Normalmente, este else nunca é chamado porque estamos a assumir que a API devolve
+                        uma mensagem de erro.
+                        Mas se por alguma eventualidade a API devolver valores que não estamos à espera
+                        Podemos perceber o que se passa de errado (eles poderiam estar a mudar o JSON da resposta)
+                    */
+
+                    else{
+                        $("table").addClass("invisible");
+                        console.log(res.responseJSON.message);
+                        alert("Erro !");
+                    }
                 }
-            }1);
+            });
         }
     }
     ko.applyBindings(new CityWeatherModel());

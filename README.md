@@ -7,3 +7,5 @@ Sessão de estudo organizada pelo NEI-AAUAv no dia 10 de dezembro de 2018.
 * [Pedro Escaleira](https://github.com/oEscal)
 * [Rafael Simões](https://github.com/Rafaelyot)
 * [Diogo Silva](https://github.com/HerouFenix)
+* [Tiago Mendes](https://github.com/tiagocmendes)
+* [Vasco Ramos](https://github.com/BlasphemyCoder)

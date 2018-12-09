@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8" />
+   <title>Concerto</title>
+   <link href="../../lib/bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+   <h1 class="panel text-center">Formulário</h1>
+   <div class="container">
+      <form action="http://192.168.160.36/FormEcho.aspx" method="post">
+
+         <!--Nome-->
+         <div class="form-group">
+            <h4>Nome</h4>
+            <input type="text" id="name" value="" placeholder="Nome" class="form-control " />
+         </div>
+
+         <!--Morada-->
+         <fieldset class="form-group">
+            <h4>Morada</h4>
+            <textarea id="address" value="" placeholder="Morada" class="form-control"></textarea>
+         </fieldset>
+
+         <!--Email-->
+         <div class="form-group">
+            <h4>E-mail</h4>
+            <input type="text" id="mail" value="" placeholder="Mail" class="form-control" />
+         </div>
+
+         <!--Local-->
+         <div class="form-group checkbox " id="places">
+            <h4>Local</h4>
+            <div class="container">
+               <input type="checkbox" name="place" id="num1" value="100" />relva frente/100€<br />
+               <input type="checkbox" name="place" id="num2" value="80" />relva trás/80€<br />
+               <input type="checkbox" name="place" id="num3" value="50" />bancada lateral/50€<br />
+               <input type="checkbox" name="place" id="num4" value="65" />bancada central/65€<br />
+            </div>
+         </div>
+
+         <!--Preço-->
+         <fieldset class="form-group">
+            <h4>Preço</h4>
+            <input type="text" readonly="readonly" id="price" class="form-control" />
+         </fieldset>
+
+         <!--Botão de submissão-->
+         <div class="container col-md-12">
+            <button type="submit" id="sub" class="btn btn-default col-md-offset-5" data-target="#mensagem" data-toggle="modal">Submeter</button>
+         </div>
+
+         <!--Modal para apresentação dos erros-->
+         <div class="modal fade" role="dialog" id="all_modal">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title">Modal Header</h4>
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body alert-danger" id="modal">
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+
+   <script src="../../lib/jquery/jquery-3.3.1.min.js"></script>
+   <script src="../../lib/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+   <script src="script.js"></script>
+</body>
+</html>

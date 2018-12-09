@@ -73,6 +73,7 @@ $(document).ready(function () {
                                 '</p>');
         }
 
+        //caso esteja tudo ok, é removido o modal com os erros
         if (valid)
             $('#all_modal').children().remove();
 

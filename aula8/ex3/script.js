@@ -30,7 +30,7 @@ $(document).ready(function () {
         var name_size = $.trim($('#name').val()).length;
         var address_size = $.trim($('#address').val()).length;
         var email_size = $.trim($('#mail').val()).length;
-        //o "@" aparece sempre antes do "." num endereço email
+        //o "@" aparece sempre antes do ultimo "." num endereço email
         var valid_email = $('#mail').val().indexOf('@') > $('#mail').val().lastIndexOf('.');
         //número de locais selecionado
         for (var places_num = 0; places_num < $('input[name=place]:checked').length; places_num++);
@@ -53,7 +53,7 @@ $(document).ready(function () {
             error_messages.push('E-mail inválido!<br>&emsp;O e-mail deve conter pelo menos 10 caracteres');
         }   
 
-        //verificar se o "@" aparece antes do "." no mail
+        //verificar se o "@" aparece antes do ultimo "." no mail
         if(valid_email){
             valid = false;
             error_messages.push('Formato de e-mail inválido!');

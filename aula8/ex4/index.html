@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8" />
+   <title>Metereologia</title>
+   <link href="../../lib/bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="../../lib/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+   <div class="container-fluid col-md-10">
+      <h1 class="jumbotron" style="background-color:white;">Metereologia</h1>
+      
+      <input type="text" class="form-control " id="name" value="" placeholder="Nome" />
+      <input type="button" id="bot" value="Pesquisar" class="col-md-12 btn btn-primary" />
+   
+      <br>
+      <br>
+      <br>
+      
+      <table class="table table-striped" style="display:none;">
+         <tr>
+            <td class="col-xs-2">City Name:</td>
+            <td class="col-xs-10" id="cityName"></td>
+         </tr>
+         <tr>
+            <td class="col-xs-2">Coordinates:</td>
+            <td class="col-xs-10" id="coordinates"></td>
+         </tr>
+         <tr>
+            <td class="col-xs-2">Weather:</td>
+            <td class="col-xs-10" id="weather"></td>
+         </tr>
+         <tr>
+            <td class="col-xs-2">Temp:</td>
+            <td class="col-xs-10" id="temp"></td>
+         </tr>
+         <tr>
+            <td class="col-xs-2">Pressure:</td>
+            <td class="col-xs-10" id="pressure"></td>
+         </tr>
+         <tr>
+            <td class="col-xs-2">Dados recolhidos:</td>
+            <td class="col-xs-10" id="allData"></td>
+         </tr>
+      </table>
+   </div>
+
+
+   <script src="../../lib/jquery/jquery-3.3.1.min.js"></script>
+   <script src="../../lib/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+   <script src="../../lib/jquery-ui/jquery-ui.min.js"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>

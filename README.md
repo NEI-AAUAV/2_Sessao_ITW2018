@@ -9,6 +9,7 @@ Sessão de estudo organizada pelo NEI-AAUAv no dia 10 de dezembro de 2018.
 * [Diogo Silva](https://github.com/HerouFenix)
 * [Tiago Mendes](https://github.com/tiagocmendes)
 * [Vasco Ramos](https://github.com/BlasphemyCoder)
+* [Rafael Teixeira](https://github.com/ZiTh0s)
 
 ## Download and Clone
 * Clonar repositório: `git clone https://github.com/NEI-AAUAV/2_Sessao_ITW2018`
